@@ -25,21 +25,21 @@ export default {
           required: true
       }
     },
-    created() {
-        this.$store.dispatch('auth/currentUser')
-        this.checkUserState()
-
-    },
+    // created() {
+    //     this.$store.dispatch('auth/currentUser')
+    //     this.checkUserState()
+    //
+    // },
     methods: {
         async sendMessage() {
             this.form.userId = this.userId
             await useChat().addMessage(this.form)
             this.form.message = ''
         },
-        ...mapActions({
-            logout: "auth/logout",
-            checkUserState: 'auth/setLoggedInstate'
-        }),
+        // ...mapActions({
+        //     logout: "auth/logout",
+        //     checkUserState: 'auth/setLoggedInstate'
+        // }),
     }
 }
 </script>

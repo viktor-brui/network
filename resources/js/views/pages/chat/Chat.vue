@@ -1,11 +1,12 @@
 <template>
-    <div>Chat</div>
+    <Navigation/>
     <div class="chat">
         <div class="chat-title">
-            <h1>Виктор</h1>
+            <h1>{{currentUser.name}}</h1>
             <h2>Chat</h2>
             <figure class="avatar">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" />
+            </figure>
         </div>
         <ChatMessages :user="currentUser"></ChatMessages>
         <div class="message-box">
@@ -20,13 +21,15 @@
 import ChatForm from "./ChatForm";
 import MessageItem from "./MessageItem";
 import ChatMessages from "./ChatMessages";
-import {mapActions} from "vuex";
+import { mapActions } from "vuex";
+import Navigation from "../../layouts/Navigation";
 export default {
     name: "Chat",
     components: {
         ChatForm,
         MessageItem,
-        ChatMessages
+        ChatMessages,
+        Navigation
     },
     data: () => ({
         user: ''

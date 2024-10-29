@@ -1,17 +1,6 @@
 <template>
-
-    <div>Dashboard view</div>
     <div>
-        <nav>
-            <ul  class="navigation">
-                <router-link to="/profile"><li><a href="">Profile</a></li></router-link>
-                <router-link to="/settings"><li><a href="">Settings</a></li></router-link>
-                <li><a href="">About</a></li>
-            </ul>
-            <div class="button">
-                <MainButton @click.prevent="logout" v-if="loggedIn">Log Out</MainButton>
-            </div>
-        </nav>
+        <Navigation/>
     </div>
 </template>
 
@@ -19,9 +8,10 @@
 
 import { mapGetters, mapActions } from 'vuex'
 import MainButton from "../../components/UI/MainButton";
+import Navigation from "../layouts/Navigation";
 export default {
     name: "Dashboard",
-    components: {MainButton},
+    components: {MainButton,Navigation},
     data: () => ({
 
     }),
@@ -48,27 +38,6 @@ export default {
 
 <style scoped lang="scss">
 
-nav {
-    margin: 30px;
-    background-color: var(--color-gray-dark);
-}
 
-.navigation {
-    list-style: none;
-    float: left;
-
-    li {
-        display: inline-block;
-        margin-left: 30px;
-
-        &first-child {
-            margin: 0
-        }
-    }
-}
-
-.button {
-    float: right;
-}
 
 </style>

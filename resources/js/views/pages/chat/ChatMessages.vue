@@ -2,15 +2,13 @@
     <div class="messages">
         <div class="messages-content">
             <div class="chat-messages" v-for="message in messages">
-                <div class="message" :class="{'justify-end': message.id !== user.id}">{{ message.message }}</div>
-<!--                <div class="message" >{{ user.id }}</div>-->
+                <div class="message" :class="{'justify-end': message.user_id !== user.id}">{{ message.message }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-// :v-if="message.user_id != user.id"
 import useChat from "../../../camposables/chat"
 
 export default {
@@ -27,10 +25,8 @@ export default {
     },
     async mounted() {
         const {messages, getMessages} = useChat()
-        // await getMessages()
 
         this.messages = await getMessages()
-        console.log('123', this.messages)
     },
 }
 </script>
@@ -42,5 +38,9 @@ export default {
 }
 .messages {
     color: white;
+    .justify-end {
+        justify-content: right;
+        float: right !important;
+    }
 }
 </style>

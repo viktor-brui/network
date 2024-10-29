@@ -30,13 +30,10 @@ const actions = {
     },
 
     loginUser(context, payload) {
-        console.log('context', context)
-        console.log('payload', payload)
         return new Promise((resolve, reject) => {
             axios
                 .post('/api/login', payload)
                 .then(response => {
-                    console.log('response', response)
                     if (response.data.access_token) {
                         localStorage.setItem('token', response.data.access_token)
                         context.commit('setLoggedIn', true)
@@ -129,7 +126,6 @@ const actions = {
             })
                 .then(response => {
                     context.commit('setUserDetails', response.data.data)
-                    console.log('response ', response)
                 })
                 .catch((error) => {
                     reject(error)

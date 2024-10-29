@@ -1,22 +1,12 @@
 <template>
-    <div>UserProfile view</div>
+    <Navigation/>
     <div class="container">
-        <div>
-            <nav>
-                <ul  class="navigation">
-                    <router-link to="/profile"><li><a href="">Profile</a></li></router-link>
-                    <router-link to="/settings"><li><a href="">Settings</a></li></router-link>
-                    <li><a href="">About</a></li>
-                </ul>
-                <div class="button">
-                    <MainButton @click="logout" v-if="loggedIn">Log Out</MainButton>
-                </div>
-            </nav>
-        </div>
         <div class="card">
-            <div class="avatar"></div>
+            <figure class="avatar">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" />
+            </figure>
             <div class="stats">
-                <h2> Name: {{ currentUser.id  }} </h2>
+                <h2> Id: {{ currentUser.id  }} </h2>
                 <h2> Name: {{ currentUser.name  }} </h2>
                 <h2> Email: {{ currentUser.email  }} </h2>
                 <h2> Joined: {{ currentUser.created_at }} </h2>
@@ -30,16 +20,17 @@
 
 import { mapGetters, mapActions } from 'vuex'
 import MainButton from "../../components/UI/MainButton";
+import Navigation from "../layouts/Navigation";
 
 export default {
     name: "UserProfile",
     components: {
+        Navigation,
         MainButton
     },
     created() {
         this.$store.dispatch('auth/currentUser')
         this.checkUserState()
-        console.log('currentUser', this.$store.state.auth.userDetails)
     },
     data: () => ({
 
@@ -72,8 +63,8 @@ export default {
 .card {
     position: relative;
     height: 520px;
-    width: 300px;
-    background-color: #ffffff;
+    width: max-content;
+    background-color: #044f48;
     margin: 100px auto 0;
     overflow: hidden;
     box-shadow: 0 5px 20px 0 rgb(0,0,0,0.3);
@@ -85,11 +76,21 @@ export default {
     border: 3px solid #aaaaaa;
     overflow: hidden;
     margin: 50px auto 30px;
+
+    img {
+        height: 100%;
+        width: 100%;
+    }
 }
 .stats {
-    padding: 0;
-    height: 250px;
-    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 10px;
+    //height: 250px;
+    //width: 300px;
+    color: white;
 }
 h2 {
     text-align: center;

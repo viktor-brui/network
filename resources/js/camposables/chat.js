@@ -27,7 +27,6 @@ export default function useChat() {
                 unref(messages).push(response.data)
             })
         } catch (e) {
-            console.log('!!!!', e)
             if (e.response.status === 422) {
                 errors.value = e.response.data.errors
             }

@@ -1,19 +1,6 @@
 <template>
-    <div>Settings view</div>
+    <Navigation/>
     <div class="container">
-        <div>
-            <h1>Settings</h1>
-            <nav>
-                <ul  class="navigation">
-                    <router-link to="/profile"><li><a href="">Profile</a></li></router-link>
-                    <router-link to="/settings"><li><a href="">Settings</a></li></router-link>
-                    <li><a href="">About</a></li>
-                </ul>
-                <div class="button">
-                    <MainButton @click="logout" v-if="loggedIn">Log Out</MainButton>
-                </div>
-            </nav>
-        </div>
 
         <div class="settings-page">
             <form action="" class="form">
@@ -42,11 +29,14 @@
 import { mapGetters, mapActions } from 'vuex'
 import MainButton from "../../components/UI/MainButton";
 import MainInput from "../../components/UI/MainInput";
+import Navigation from "../layouts/Navigation";
 
 export default {
     name: "Settings",
     components: {
-        MainButton,MainInput
+        Navigation,
+        MainButton,
+        MainInput,
     },
     created() {
         this.$store.dispatch('auth/currentUser')
@@ -99,6 +89,7 @@ export default {
     font-weight: 700;
     text-align: center;
     font-size: 25px;
+    color: white;
     text-shadow: 0 5px 8px rgb(0,0,0,0.65);
     overflow: hidden;
     margin: 0;
@@ -109,7 +100,7 @@ export default {
     padding: 8% 0 0;
     margin: auto;
     display: flex;
-    background-color: #798394;
+    background-color: #044f48;
     align-items: center;
     flex-direction: column;
 }
